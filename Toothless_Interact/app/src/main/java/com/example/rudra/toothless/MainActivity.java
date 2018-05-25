@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
     protected void onCreate(Bundle savedInstanceState) {
         //show intro screen
 
+
         Intent i=new Intent(MainActivity.this,Intro.class);
         startActivity(i);
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
             @Override
             public void onClick(View v) {
                 if(check==true){
-                    cameraDetector.start();
+                   cameraDetector.start();
                 }
             }
         });
