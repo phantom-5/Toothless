@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 
 public class Intro extends Activity {
     static boolean control=true;
@@ -77,9 +78,14 @@ public class Intro extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    tts.speak("You chose "+you_chose.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
+                    if(you_chose!=null) {
+                        tts.speak("You chose " + you_chose.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    }else {
+                        Intent i = new Intent(Intro.this, Intro.class);
+                        startActivity(i);
+                    }
                 }
-            }, 20000);
+            }, 15000);
         }
 
 
@@ -109,8 +115,35 @@ public class Intro extends Activity {
             case 10:
                 if (resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    you_chose=findViewById(R.id.you_chose);
-                    you_chose.setText(result.get(0));
+                    String x=result.get(0);
+                    if(x!=null){
+                        you_chose=findViewById(R.id.you_chose);
+                    }
+                    if(x.equals("analyse")){
+                        x="analyze";
+                    }
+                    else if(x.equals("walk")){x="walk";}
+                    else if(x.equals("override")){x="override";}
+                    else{
+                        Random r=new Random();
+                        int y=r.nextInt(100);
+                        if(y%2==0) {
+                            tts.speak("Oh! Captain, My Captain. Got to give me something to start with.", TextToSpeech.QUEUE_FLUSH, null);
+                        }else{
+                            tts.speak("Come on, I am getting bored, lets do something", TextToSpeech.QUEUE_FLUSH, null);
+                        }
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i=new Intent(Intro.this,Intro.class);
+                                startActivity(i);
+                            }
+                        }, 5000);
+
+                    }
+                    you_chose.setText(x);
+
                 }
                 break;
         }
