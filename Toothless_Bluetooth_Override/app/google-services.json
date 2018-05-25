@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "776907978444",
+    "firebase_url": "https://toothless-8ef64.firebaseio.com",
+    "project_id": "toothless-8ef64",
+    "storage_bucket": "toothless-8ef64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776907978444:android:eec3dfeb9350a532",
+        "android_client_info": {
+          "package_name": "com.example.rudra.toothless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776907978444-0t2n6khmi1piddhuuudb89omf9d600vj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rudra.toothless",
+            "certificate_hash": "415f4773688d83e6fb920d0f2e3e40f19797d3c8"
+          }
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtHcOrWArLG0Jn42ZwGB0K_Xu4lpOa_N0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776907978444:android:80c273ceacb37cf0",
+        "android_client_info": {
+          "package_name": "com.example.rudra.toothless_bluetooth_override"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776907978444-jj82n85dgp6h4rumdu2g88qa32lvg83f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rudra.toothless_bluetooth_override",
+            "certificate_hash": "415f4773688d83e6fb920d0f2e3e40f19797d3c8"
+          }
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtHcOrWArLG0Jn42ZwGB0K_Xu4lpOa_N0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776907978444:android:5c746f424d92a832",
+        "android_client_info": {
+          "package_name": "com.example.rudra.toothless_interface_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776907978444-b066038ii6frgte21dkg9kn15d72nj4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rudra.toothless_interface_app",
+            "certificate_hash": "415f4773688d83e6fb920d0f2e3e40f19797d3c8"
+          }
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtHcOrWArLG0Jn42ZwGB0K_Xu4lpOa_N0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776907978444-beobbhdvkmm0r8eia3vuoenu0o7k5fjc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
