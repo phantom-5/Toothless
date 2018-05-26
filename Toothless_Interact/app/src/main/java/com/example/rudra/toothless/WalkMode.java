@@ -8,8 +8,10 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.WrapperListAdapter;
 
 import com.robertsimoes.quoteable.QuotePackage;
 import com.robertsimoes.quoteable.Quoteable;
@@ -24,10 +26,25 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     TextToSpeech tts;
     int result_tts;
     String x_tts;
+    Button walk_mode_abort;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.walk_mode);
+        walk_mode_abort=findViewById(R.id.walk_mode_abort);
+        walk_mode_abort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i=new Intent(WalkMode.this,MainActivity.class);
+                        startActivity(i);
+                    }
+                }, 10000);
+            }
+        });
         final Quoteable quoteable = new Quoteable(this,"Jim Rohn","Life is like the changing seasons.");
         final Handler handler = new Handler();
         quoteable.request();
@@ -82,7 +99,8 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                tts.speak(x_tts_inner,TextToSpeech.QUEUE_FLUSH,null);
+                if(!walk_mode_abort.isPressed()){
+                tts.speak(x_tts_inner,TextToSpeech.QUEUE_FLUSH,null);}
             }
         }, 5000);
 
@@ -92,6 +110,7 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     public void onQuoteResponseFailed(QuotePackage defaultResponse) {
         Log.d("RICKY",defaultResponse.getQuote());
         Log.d("RICKY",defaultResponse.getAuthor());
+        tts.speak("I am not connected to internet, Good for you, Not so much for me",TextToSpeech.QUEUE_FLUSH,null);
     }
 
 
