@@ -84,6 +84,14 @@ public class Intro extends Activity {
                                     startActivityForResult(i,1);
                                 }
                             }, 4000);
+                        }else if(you_chose.getText().toString().equals("walk")){
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent i=new Intent(Intro.this,WalkMode.class);
+                                    startActivity(i);
+                                }
+                            }, 4000);
                         }
                     }else {
                         Intent i = new Intent(Intro.this, Intro.class);
