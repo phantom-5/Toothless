@@ -2,6 +2,7 @@ package com.example.rudra.toothless;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
         cameraDetector.setImageListener(this);
         cameraDetector.setDetectSmile(true);
         cameraDetector.setMaxProcessRate(20);
-        Button button2=findViewById(R.id.button2);
+        final Button button2=findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                 }
             }
         });
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                button2.performClick();
+            }
+        }, 2000);
 
     }
 
