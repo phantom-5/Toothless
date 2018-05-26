@@ -3,11 +3,9 @@ package com.example.rudra.toothless;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
@@ -18,7 +16,6 @@ import java.util.Locale;
 import java.util.Random;
 
 public class Intro extends Activity {
-    static boolean control=true;
     TextToSpeech tts;
 
     int result;
@@ -70,8 +67,6 @@ public class Intro extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                   // tts.stop();
-                   // tts.shutdown();
                     getSpeechInput(v);
                 }
             }, 7000);
