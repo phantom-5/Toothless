@@ -80,6 +80,16 @@ public class Intro extends Activity {
                 public void run() {
                     if(you_chose!=null) {
                         tts.speak("You chose " + you_chose.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        if(you_chose.getText().toString().equals("analyze")){
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent i=new Intent(Intro.this,MainActivity.class);
+                                    i.putExtra("Pass_from_Intro",false);
+                                    startActivityForResult(i,1);
+                                }
+                            }, 4000);
+                        }
                     }else {
                         Intent i = new Intent(Intro.this, Intro.class);
                         startActivity(i);

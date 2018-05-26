@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //show intro screen
-
-
-        Intent i=new Intent(MainActivity.this,Intro.class);
-        startActivity(i);
-
+        Intent intent=getIntent();
+        boolean Pass_from_Intro=intent.getBooleanExtra("Pass_from_Intro",true);
+        if(Pass_from_Intro) {
+            Intent i = new Intent(MainActivity.this, Intro.class);
+            startActivity(i);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
