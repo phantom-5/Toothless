@@ -87,7 +87,12 @@ public class HappyMode extends AppCompatActivity {
                 if (resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String x=result.get(0);
-                    
+                    if(check_this_string(x,"music")) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("https://www.youtube.com/**Vevo**"));
+                        intent.setPackage("com.google.android.youtube");
+                        startActivity(intent);
+                    }
                 }
                 break;
         }
