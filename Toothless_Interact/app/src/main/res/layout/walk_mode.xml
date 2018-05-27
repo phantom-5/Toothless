@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="#70ffffff"
         android:elevation="10sp"
         android:padding="10sp"
@@ -62,6 +63,7 @@
         android:background="#7000753a"
         android:gravity="center"
         android:text="Abort"
+        android:textColor="#70000000"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,10 +76,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/toothless_face"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/toothless_face"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

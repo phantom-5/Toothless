@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class WalkMode extends Activity implements Quoteable.ResponseReadyListener,ConnectionCallbacks,
+public class WalkMode extends AppCompatActivity implements Quoteable.ResponseReadyListener,ConnectionCallbacks,
         OnConnectionFailedListener,
         LocationListener {
 
@@ -64,11 +65,11 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
                 .build();
 
         // Create the LocationRequest object
-        /**
+
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in millisecond **/
+                .setFastestInterval(1 * 1000); // 1 second, in millisecond
 
         walk_mode_abort=findViewById(R.id.walk_mode_abort);
         walk_mode_dist=findViewById(R.id.walk_mode_dist);
@@ -257,7 +258,7 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
         if(y_tts%8==0||y_tts%7==0||y_tts%13==0){
             x_tts="Did you know what "+q_author+" once said ";
         }else if(y_tts%6==0){
-            x_tts=q_author+" says ";
+            x_tts=q_author+" says that ";
         }else{
             x_tts="It was said by "+q_author+" that ";
         }

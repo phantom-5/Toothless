@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
-public class Intro extends Activity {
+public class Intro extends AppCompatActivity {
     TextToSpeech tts;
 
     int result;
