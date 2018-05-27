@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.robertsimoes.quoteable.QuotePackage;
 import com.robertsimoes.quoteable.Quoteable;
+
+import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Random;
 import com.google.android.gms.common.ConnectionResult;
@@ -43,6 +45,11 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     private double currentLatitude;
     private double currentLongitude;
     TextView walk_mode_dist,walk_mode_lat,walk_mode_long;
+    private double lat1;
+    private double lon1;
+    private double dist_walked=0;
+    private int first_use=0;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +177,21 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
                 currentLongitude = location.getLongitude();
                 walk_mode_lat.setText(Double.toString(currentLatitude));
                 walk_mode_long.setText(Double.toString(currentLongitude));
+                if(first_use==0){
+                    lat1=currentLatitude;
+                    lon1=currentLongitude;
+                    first_use=1;
+                }
+                dist_walked+=distance(lat1,lon1,currentLatitude,currentLongitude);
+                if(dist_walked<=0){
+                    dist_walked=0;
+                }
+                DecimalFormat df = new DecimalFormat("##.##");
+                dist_walked= Double.valueOf(df.format(dist_walked));
+                Log.d("RICKY",Double.toString(dist_walked));
+                lat1=currentLatitude;
+                lon1=currentLongitude;
+                walk_mode_dist.setText(Double.toString(dist_walked)+" km");
                 Log.d("RICKY","lat= "+currentLatitude);
                 Log.d("RICKY","long="+currentLongitude);
 
@@ -257,6 +279,24 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     public void onQuoteResponseFailed(QuotePackage defaultResponse) {
         Log.d("RICKY",defaultResponse.getQuote());
         Log.d("RICKY",defaultResponse.getAuthor());
+    }
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
+    }
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))
+                * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1))
+                * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
     }
 
 
