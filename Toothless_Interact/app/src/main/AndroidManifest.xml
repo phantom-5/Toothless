@@ -29,6 +29,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".WalkMode"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".OverrideMode"></activity>
     </application>
 
 </manifest>

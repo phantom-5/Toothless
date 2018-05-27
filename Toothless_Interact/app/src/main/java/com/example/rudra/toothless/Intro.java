@@ -93,7 +93,16 @@ public class Intro extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }, 4000);
+                        }else if(you_chose.getText().toString().equals("override")){
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent i=new Intent(Intro.this,OverrideMode.class);
+                                    startActivity(i);
+                                }
+                            }, 4000);
                         }
+
                     }else {
                         Intent i = new Intent(Intro.this, Intro.class);
                         startActivity(i);
