@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                 Log.d("RICKY", "Need some talks");
                 cameraDetector.stop();
             }
-                if (smile3 >= 70){
+                if (smile3 >= 75){
                     Log.d("RICKY", "You are sad");
                     cameraDetector.stop();
-                    //Intent i=new Intent(MainActivity.this,WalkMode.class);
-                    //startActivity(i);
+                    Intent i=new Intent(MainActivity.this,SadMode.class);
+                    startActivity(i);
             }
         }
     }
