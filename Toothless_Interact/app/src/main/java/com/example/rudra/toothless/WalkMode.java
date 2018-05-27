@@ -28,7 +28,6 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-//import com.google.android.gms.maps.GoogleMap;
 
 public class WalkMode extends Activity implements Quoteable.ResponseReadyListener,ConnectionCallbacks,
         OnConnectionFailedListener,
@@ -43,6 +42,7 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     private LocationRequest mLocationRequest;
     private double currentLatitude;
     private double currentLongitude;
+    TextView walk_mode_dist,walk_mode_lat,walk_mode_long;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,10 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
                 .setFastestInterval(1 * 1000); // 1 second, in millisecond **/
 
         walk_mode_abort=findViewById(R.id.walk_mode_abort);
+        walk_mode_dist=findViewById(R.id.walk_mode_dist);
+        walk_mode_lat=findViewById(R.id.walk_mode_lat);
+        walk_mode_long=findViewById(R.id.walk_mode_long);
+
         walk_mode_abort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,9 +168,11 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
                 //If everything went fine lets get latitude and longitude
                 currentLatitude = location.getLatitude();
                 currentLongitude = location.getLongitude();
-
+                walk_mode_lat.setText(Double.toString(currentLatitude));
+                walk_mode_long.setText(Double.toString(currentLongitude));
                 Log.d("RICKY","lat= "+currentLatitude);
                 Log.d("RICKY","long="+currentLongitude);
+
             }
         }
 
