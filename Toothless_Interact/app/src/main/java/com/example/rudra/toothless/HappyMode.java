@@ -92,6 +92,9 @@ public class HappyMode extends AppCompatActivity {
                         intent.setData(Uri.parse("https://www.youtube.com/**Vevo**"));
                         intent.setPackage("com.google.android.youtube");
                         startActivity(intent);
+                    }else if(check_this_string(x,"friend")){
+                        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
+                        startActivity(launchIntent);
                     }
                 }
                 break;
