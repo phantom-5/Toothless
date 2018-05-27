@@ -53,13 +53,13 @@
 
     <Button
         android:id="@+id/override_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text=" "
         android:background="#00000000"
+        android:text=" "
         app:layout_constraintBottom_toTopOf="@+id/override_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
