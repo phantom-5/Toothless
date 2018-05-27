@@ -39,47 +39,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/sad_mode_listen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="LISTEN"
-        android:background="#50ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/sad_mode_joke"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sad_mode_joke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="JOKE"
-        android:background="#50ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/sad_mode_relax"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sad_mode_relax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="RELAX"
-        android:background="#50ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/sad_mode_stop"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sad_mode_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        android:layout_marginStart="8dp"
-        android:background="#50ffffff"
-        android:text="STOP"
-        app:layout_constraintBottom_toTopOf="@+id/sad_mode_talk"
-        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
