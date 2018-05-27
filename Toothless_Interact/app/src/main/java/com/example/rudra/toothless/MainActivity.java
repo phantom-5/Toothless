@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
     SurfaceView cameraPreview;
     TextView textView;
     boolean check=false;
+    int smile1=0,smile2=0,smile3=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
 
     }
 
+
     @Override
     public void onImageResults(List<Face> faces, Frame frame, float v) {
         TextView textView=findViewById(R.id.smile_percent);
@@ -76,6 +79,25 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
         }else{
             Face face=faces.get(0);
             textView.setText(String.format("SMILE: %.2f",face.expressions.getSmile()));
+            if(face.expressions.getSmile()>=95){
+                smile1++;
+            }else if(face.expressions.getSmile()>=20){
+                smile2++;
+            }else{
+                smile3++;
+            }
+            if(smile1>=70){
+                Log.d("RICKY","You are happy");
+                cameraDetector.stop();
+            }
+            if(smile2>=70){
+                Log.d("RICKY", "Need some talks");
+                cameraDetector.stop();
+            }
+                if (smile3 >= 70){
+                    Log.d("RICKY", "You are sad");
+                    cameraDetector.stop();
+            }
         }
     }
 }
