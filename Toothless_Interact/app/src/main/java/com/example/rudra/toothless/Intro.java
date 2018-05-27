@@ -38,6 +38,7 @@ public class Intro extends AppCompatActivity {
                 }
             }
         });
+
         TextView hello_text = findViewById(R.id.hello_text);
         final TextView iam_text = findViewById(R.id.iam_text);
         hello_text.setText("Hello!");

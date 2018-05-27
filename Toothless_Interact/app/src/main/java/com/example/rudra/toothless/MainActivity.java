@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
             if(smile1>=70){
                 Log.d("RICKY","You are happy");
                 cameraDetector.stop();
+                Intent i=new Intent(MainActivity.this,HappyMode.class);
+                startActivity(i);
             }
             if(smile2>=70){
                 Log.d("RICKY", "Need some talks");
