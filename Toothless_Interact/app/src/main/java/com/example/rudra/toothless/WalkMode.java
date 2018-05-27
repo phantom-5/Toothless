@@ -57,10 +57,11 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
                 .build();
 
         // Create the LocationRequest object
+        /**
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in millisecond
+                .setFastestInterval(1 * 1000); // 1 second, in millisecond **/
 
         walk_mode_abort=findViewById(R.id.walk_mode_abort);
         walk_mode_abort.setOnClickListener(new View.OnClickListener() {
@@ -93,10 +94,22 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
         });
         final TextView count_down = findViewById(R.id.count_down);
         CountDownTimer cd;
-        cd = new CountDownTimer(61000, 1000) {
+        cd = new CountDownTimer(3601000, 1000) {
             @Override
             public void onTick(long l) {
                 count_down.setText(Integer.toString((int) (l / 1000)));
+                if((int)(l/1000)%5==0){
+                    mGoogleApiClient.connect();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mGoogleApiClient.disconnect();
+                        }
+                    }, 2000);
+
+                }
+
             }
 
             @Override
@@ -111,7 +124,7 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
     @Override
     protected void onResume() {
         super.onResume();
-        mGoogleApiClient.connect();
+
     }
 
     @Override
@@ -128,23 +141,17 @@ public class WalkMode extends Activity implements Quoteable.ResponseReadyListene
         if (ContextCompat.checkSelfPermission(WalkMode.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-
             // Permission is not granted
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(WalkMode.this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
                 // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
             } else {
                 // No explanation needed; request the permission
                 ActivityCompat.requestPermissions(WalkMode.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         111);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         } else {
             // Permission has already been granted
