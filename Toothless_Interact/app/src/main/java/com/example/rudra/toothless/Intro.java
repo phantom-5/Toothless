@@ -75,8 +75,12 @@ public class Intro extends AppCompatActivity {
                 @Override
                 public void run() {
                     if(you_chose!=null) {
-                        tts.speak("You chose " + you_chose.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
-                        if(you_chose.getText().toString().equals("analyze")){
+                        String temp_x=you_chose.getText().toString();
+                        int c1=0,c2=0,c3=0;
+                        if(check_this_string(temp_x,"analys")){c1=1; tts.speak("You chose " + "analyze", TextToSpeech.QUEUE_FLUSH, null);}
+                        if(check_this_string(temp_x,"walk")){c2=1; tts.speak("You chose " + "to walk", TextToSpeech.QUEUE_FLUSH, null);}
+                        if(check_this_string(temp_x,"overrid")){c3=1; tts.speak("You chose " + " to override me", TextToSpeech.QUEUE_FLUSH, null);}
+                        if(c1==1){
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -85,7 +89,7 @@ public class Intro extends AppCompatActivity {
                                     startActivityForResult(i,1);
                                 }
                             }, 4000);
-                        }else if(you_chose.getText().toString().equals("walk")){
+                        }else if(c2==1){
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -93,7 +97,7 @@ public class Intro extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }, 4000);
-                        }else if(you_chose.getText().toString().equals("override")){
+                        }else if(c3==1){
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -101,6 +105,23 @@ public class Intro extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }, 4000);
+                        }else if(c1==0&&c2==0&&c3==0){
+                                Random r=new Random();
+                                int y=r.nextInt(100);
+                                if(y%2==0) {
+                                    tts.speak("Oh! Captain, My Captain. Got to give me something to start with.", TextToSpeech.QUEUE_FLUSH, null);
+                                }else{
+                                    tts.speak("Come on, I am getting bored, lets do something", TextToSpeech.QUEUE_FLUSH, null);
+                                }
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i=new Intent(Intro.this,Intro.class);
+                                        startActivity(i);
+                                    }
+                                }, 5000);
+
                         }
 
                     }else {
@@ -141,35 +162,17 @@ public class Intro extends AppCompatActivity {
                     String x=result.get(0);
                     if(x!=null){
                         you_chose=findViewById(R.id.you_chose);
+                        you_chose.setText(x);
                     }
-                    if(x.equals("analyse")){
-                        x="analyze";
-                    }
-                    else if(x.equals("walk")){x="walk";}
-                    else if(x.equals("override")){x="override";}
-                    else{
-                        Random r=new Random();
-                        int y=r.nextInt(100);
-                        if(y%2==0) {
-                            tts.speak("Oh! Captain, My Captain. Got to give me something to start with.", TextToSpeech.QUEUE_FLUSH, null);
-                        }else{
-                            tts.speak("Come on, I am getting bored, lets do something", TextToSpeech.QUEUE_FLUSH, null);
-                        }
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent i=new Intent(Intro.this,Intro.class);
-                                startActivity(i);
-                            }
-                        }, 5000);
-
-                    }
-                    you_chose.setText(x);
-
                 }
                 break;
         }
+    }
+    public boolean check_this_string(String s,String p){
+        if(s.indexOf(p)<0){
+            return false;
+        }
+        return true;
     }
 
 
