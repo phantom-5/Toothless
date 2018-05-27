@@ -25,9 +25,6 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_screen);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setPackage("com.google.android.assistant");
-        startActivity(intent);
         tts=new TextToSpeech(Intro.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
