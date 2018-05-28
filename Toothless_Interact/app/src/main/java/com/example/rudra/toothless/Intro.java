@@ -25,7 +25,6 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_screen);
-       // startActivity(new Intent(Intent.ACTION_VOICE_COMMAND).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); works
         tts=new TextToSpeech(Intro.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
