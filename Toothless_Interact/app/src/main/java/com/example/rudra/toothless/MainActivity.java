@@ -13,6 +13,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.affectiva.android.affdex.sdk.Frame;
 import com.affectiva.android.affdex.sdk.detector.CameraDetector;
@@ -94,6 +95,9 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
             }
             if(smile2>=70){
                 Log.d("RICKY", "Need some talks");
+                Toast.makeText(MainActivity.this,"Everythin seems normal",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(MainActivity.this,MainActivity.class);
+                startActivity(i);
                 cameraDetector.stop();
             }
                 if (smile3 >= 75){

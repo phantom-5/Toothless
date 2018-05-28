@@ -5,20 +5,27 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.VideoView;
-
 import java.util.Random;
-
 
 public class PresentationMode extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.presentation_mode);
         VideoView videoView=findViewById(R.id.VideoView);
+        Button presentation_mode_exit=findViewById(R.id.presentation_mode_exit);
+        presentation_mode_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(PresentationMode.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
         Random r=new Random();
         int x=r.nextInt(10);
         String videoPath;
-        //"android.resource://com.example.rudra.toothless/"+R.raw.baymax3;
         if(x%2==0){
             videoPath="android.resource://com.example.rudra.toothless/"+R.raw.baymax3;
         }else{

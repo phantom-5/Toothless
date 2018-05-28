@@ -10,4 +10,13 @@
         android:id="@+id/VideoView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
+
+    <Button
+        android:id="@+id/presentation_mode_exit"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text=" "
+        android:background="#00000000" />
+
+
 </android.support.constraint.ConstraintLayout>
