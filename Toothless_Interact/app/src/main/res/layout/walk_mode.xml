@@ -45,7 +45,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text=""
-        android:textColor="#80000000"
+        android:textColor="#97000000"
         android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -104,8 +104,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text=" "
-        android:textColor="#50000000"
-        android:textStyle="bold"
+        android:textColor="#80000000"
         app:layout_constraintBottom_toTopOf="@+id/walk_mode_abort"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -116,8 +115,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text=" "
-        android:textColor="#50000000"
-        android:textStyle="bold"
+        android:textColor="#80000000"
         app:layout_constraintBottom_toTopOf="@+id/walk_mode_abort"
         app:layout_constraintEnd_toEndOf="parent" />
 
