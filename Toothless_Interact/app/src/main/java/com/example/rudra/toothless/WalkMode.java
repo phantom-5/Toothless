@@ -91,7 +91,6 @@ public class WalkMode extends AppCompatActivity implements Quoteable.ResponseRea
         });
         final Quoteable quoteable = new Quoteable(this,"Jim Rohn","Life is like the changing seasons.");
         final Handler handler = new Handler();
-        quoteable.request();
         tts=new TextToSpeech(WalkMode.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -120,6 +119,9 @@ public class WalkMode extends AppCompatActivity implements Quoteable.ResponseRea
                         }
                     }, 2000);
 
+                }
+                if((int)(l/1000)%30==0){
+                    quoteable.request();
                 }
 
             }

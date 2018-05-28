@@ -28,18 +28,19 @@
         android:id="@+id/iam_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text=""
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:background="#50ffffff"
+        android:background="#20ffffff"
         android:gravity="center"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello_text" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/you_chose"
