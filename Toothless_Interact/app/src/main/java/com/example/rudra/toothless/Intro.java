@@ -104,7 +104,11 @@ public class Intro extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }, 4000);
-                        }else if(c1==0&&c2==0&&c3==0){
+                        }else if(check_this_string(temp_x,"presentation")){
+                            Intent i=new Intent(Intro.this,PresentationMode.class);
+                            startActivity(i);
+                        }
+                        else if(c1==0&&c2==0&&c3==0){
                                 Random r=new Random();
                                 int y=r.nextInt(100);
                                 if(y%2==0) {
@@ -120,7 +124,6 @@ public class Intro extends AppCompatActivity {
                                         startActivity(i);
                                     }
                                 }, 5000);
-
                         }
 
                     }else {

@@ -32,6 +32,7 @@
         <activity android:name=".OverrideMode"></activity>
         <activity android:name=".HappyMode"></activity>
         <activity android:name=".SadMode"></activity>
+        <activity android:name=".PresentationMode"></activity>
     </application>
 
 </manifest>
