@@ -9,25 +9,28 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="397dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="436dp"
+        android:layout_marginBottom="392dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="#70000000"
         android:gravity="center"
-        android:padding="2sp"
+        android:padding="5sp"
         android:text="If Winter Comes Can Spring Be Far Behind"
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/sad_mode_talk"
-        android:layout_width="356dp"
+        android:layout_width="360dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
