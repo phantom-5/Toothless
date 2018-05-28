@@ -79,6 +79,8 @@ public class WalkMode extends AppCompatActivity implements Quoteable.ResponseRea
         walk_mode_abort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mGoogleApiClient.disconnect();
+                tts.shutdown();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -86,7 +88,7 @@ public class WalkMode extends AppCompatActivity implements Quoteable.ResponseRea
                         Intent i=new Intent(WalkMode.this,MainActivity.class);
                         startActivity(i);
                     }
-                }, 10000);
+                }, 2000);
             }
         });
         final Quoteable quoteable = new Quoteable(this,"Jim Rohn","Life is like the changing seasons.");
