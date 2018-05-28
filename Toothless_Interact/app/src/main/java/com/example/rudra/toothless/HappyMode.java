@@ -8,6 +8,7 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,9 +18,19 @@ import java.util.Random;
 public class HappyMode extends AppCompatActivity {
     TextToSpeech tts;
     int result;
+    Button happy_mode_leave;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.happy_mode);
+        happy_mode_leave=findViewById(R.id.happy_mode_leave);
+        happy_mode_leave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tts.shutdown();
+                Intent i=new Intent(HappyMode.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
         tts=new TextToSpeech(HappyMode.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -41,7 +52,7 @@ public class HappyMode extends AppCompatActivity {
         }else if(x%6==0){
             y="What a beautiful day! Let's have some fun";
         }else{
-            y="It's fuuuun O' Clock";
+            y="It's fun O' Clock";
         }
         final String y_inner=y;
         final Handler handler=new Handler();
@@ -95,6 +106,8 @@ public class HappyMode extends AppCompatActivity {
                     }else if(check_this_string(x,"friend")){
                         Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
                         startActivity(launchIntent);
+                    }else if(check_this_string(x,"exit")||check_this_string(x,"stop")){
+                        happy_mode_leave.performClick();
                     }
                 }
                 break;

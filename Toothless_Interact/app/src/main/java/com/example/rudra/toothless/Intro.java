@@ -175,5 +175,9 @@ public class Intro extends AppCompatActivity {
         return true;
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        tts.shutdown();
+    }
 }

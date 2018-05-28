@@ -25,4 +25,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/happy_mode_leave"
+        android:layout_width="113dp"
+        android:layout_height="81dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="48dp"
+        android:text=" "
+        android:background="#00000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

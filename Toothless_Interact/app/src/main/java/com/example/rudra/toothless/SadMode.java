@@ -46,4 +46,10 @@ public class SadMode extends AppCompatActivity {
             }
         },4000);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        tts.shutdown();
+    }
 }
