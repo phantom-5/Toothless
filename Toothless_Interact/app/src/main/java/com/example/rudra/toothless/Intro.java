@@ -25,6 +25,7 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_screen);
+       // startActivity(new Intent(Intent.ACTION_VOICE_COMMAND).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); works
         tts=new TextToSpeech(Intro.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -76,7 +77,7 @@ public class Intro extends AppCompatActivity {
                     if(you_chose!=null) {
                         String temp_x=you_chose.getText().toString();
                         int c1=0,c2=0,c3=0;
-                        if(check_this_string(temp_x,"analys")){c1=1; tts.speak("You chose " + "analyze", TextToSpeech.QUEUE_FLUSH, null);}
+                        if(check_this_string(temp_x,"analys")){c1=1; tts.speak("Let me " + "analyze you", TextToSpeech.QUEUE_FLUSH, null);}
                         if(check_this_string(temp_x,"walk")){c2=1; tts.speak("You chose " + "to walk", TextToSpeech.QUEUE_FLUSH, null);}
                         if(check_this_string(temp_x,"overrid")){c3=1; tts.speak("You chose " + " to override me", TextToSpeech.QUEUE_FLUSH, null);}
                         if(c1==1){
