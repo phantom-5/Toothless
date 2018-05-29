@@ -1,5 +1,4 @@
-
-<a href="https://imgur.com/qxTU0HQ"><img src="https://imgur.com/6SefsAI" title="source: imgur.com" /></a><br/>
+<a href="https://imgur.com/6SefsAI"><img src="https://i.imgur.com/6SefsAI.png" title="source: imgur.com" /></a>
 (Student Project)
 
 
