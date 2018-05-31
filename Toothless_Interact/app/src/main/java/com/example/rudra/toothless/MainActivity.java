@@ -90,12 +90,14 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
             if(smile1>=70){
                 Log.d("RICKY","You are happy");
                 cameraDetector.stop();
+                Toast.makeText(MainActivity.this,"You Are Happy",Toast.LENGTH_LONG).show();
+
                 Intent i=new Intent(MainActivity.this,HappyMode.class);
                 startActivity(i);
             }
             if(smile2>=70){
                 Log.d("RICKY", "Need some talks");
-                Toast.makeText(MainActivity.this,"Everythin seems normal",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Everything seems normal",Toast.LENGTH_LONG).show();
                 Intent i=new Intent(MainActivity.this,MainActivity.class);
                 startActivity(i);
                 cameraDetector.stop();
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                 if (smile3 >= 75){
                     Log.d("RICKY", "You are sad");
                     cameraDetector.stop();
+                    Toast.makeText(MainActivity.this,"You are sad",Toast.LENGTH_LONG).show();
                     Intent i=new Intent(MainActivity.this,SadMode.class);
                     startActivity(i);
             }
