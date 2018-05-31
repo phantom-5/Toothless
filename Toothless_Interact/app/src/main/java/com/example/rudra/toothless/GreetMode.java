@@ -41,6 +41,13 @@ public class GreetMode extends AppCompatActivity implements Detector.ImageListen
         cameraDetector.setImageListener(this);
         cameraDetector.setDetectSmile(true);
         cameraDetector.setMaxProcessRate(20);
+        final Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cameraDetector.start();
+            }
+        },5000);
     }
 
 
@@ -52,5 +59,11 @@ public class GreetMode extends AppCompatActivity implements Detector.ImageListen
             int faceId=face.getId();
             Log.d("RUDRA",Integer.toString(faceId));
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        cameraDetector.stop();
     }
 }
