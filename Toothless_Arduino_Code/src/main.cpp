@@ -4,6 +4,7 @@
 
 Servo stest;
 AF_DCMotor mbl(1);
+int servoPos=0;
 
 
 void setup() {
@@ -12,6 +13,13 @@ void setup() {
 }
 
 void loop() {
-    stest.write(0);
-   // mbl.run(FORWARD);
+    for(servoPos=0;servoPos<=180;servoPos++){
+        stest.write(servoPos);
+        delay(10);
+    }
+    for(servoPos=180;servoPos>=0;servoPos--){
+        stest.write(servoPos);
+        delay(10);
+    }
+    
 }
