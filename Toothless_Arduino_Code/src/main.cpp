@@ -7,6 +7,7 @@ AF_DCMotor mbl(1);
 int servoPos=0;
 int trigPin = A0;
 int echoPin = A1;
+float cal_dis();
 
 void setup() {
     Serial.begin(9600);
