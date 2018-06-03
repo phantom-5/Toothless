@@ -17,52 +17,37 @@ void setup() {
 }
 
 void loop() {
-    float duration,distance;
+    float distance;
       //0 degree is left , 180 is right , 90 is center
     for(servoPos=0;servoPos<=180;servoPos++){
-        
-        digitalWrite(trigPin,LOW);
-        delayMicroseconds(2);
-        digitalWrite(trigPin,HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin,LOW);
-        duration=pulseIn(echoPin,HIGH);
-        distance=(duration/2)*0.03444;
+        distance=cal_dis();
         Serial.println(distance);
         while(distance<=40){
-        digitalWrite(trigPin,LOW);
-        delayMicroseconds(2);
-        digitalWrite(trigPin,HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin,LOW);
-        duration=pulseIn(echoPin,HIGH);
-        distance=(duration/2)*0.03444;
+        distance=cal_dis();
         }
         stest.write(servoPos);
-        delay(20);
     }
     
     for(servoPos=180;servoPos>=0;servoPos--){
-        digitalWrite(trigPin,LOW);
-        delayMicroseconds(2);
-        digitalWrite(trigPin,HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin,LOW);
-        duration=pulseIn(echoPin,HIGH);
-        distance=(duration/2)*0.03444;
+        distance=cal_dis();
         Serial.println(distance);
         while(distance<=40){
-        digitalWrite(trigPin,LOW);
-        delayMicroseconds(2);
-        digitalWrite(trigPin,HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin,LOW);
-        duration=pulseIn(echoPin,HIGH);
-        distance=(duration/2)*0.03444;
+        distance=cal_dis();
         }
         stest.write(servoPos);
-        delay(20);
     }
    //stest.write(90);   //stationary state
     
+}
+float cal_dis(){
+
+        float duration,distance;
+        digitalWrite(trigPin,LOW);
+        delayMicroseconds(2);
+        digitalWrite(trigPin,HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigPin,LOW);
+        duration=pulseIn(echoPin,HIGH);
+        distance=(duration/2)*0.03444;
+        return distance;
 }
