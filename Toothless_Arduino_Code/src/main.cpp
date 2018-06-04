@@ -23,25 +23,31 @@ void loop() {
     for(servoPos=0;servoPos<=180;servoPos++){
         distance=cal_dis();
         Serial.println(distance);
+        delay(5);
         while(distance<=40){
+        stest.write(servoPos);
         distance=cal_dis();
         }
         stest.write(servoPos);
+    
     }
     
     for(servoPos=180;servoPos>=0;servoPos--){
         distance=cal_dis();
         Serial.println(distance);
+        delay(5);
         while(distance<=40){
+        stest.write(servoPos);
         distance=cal_dis();
         }
         stest.write(servoPos);
+       
     }
    //stest.write(90);   //stationary state
     
 }
 float cal_dis(){
-
+//returns distance in cm
         float duration,distance;
         digitalWrite(trigPin,LOW);
         delayMicroseconds(2);
