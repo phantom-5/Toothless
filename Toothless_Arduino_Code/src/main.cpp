@@ -11,6 +11,8 @@ int servoPos=0;
 int trigPin = A0;
 int echoPin = A1;
 float cal_dis();
+void move_forward();
+void move_backward();
 
 void setup() {
     Serial.begin(9600);
@@ -24,7 +26,7 @@ void setup() {
 }
 
 void loop() {
-    /**
+    
     float distance;
       //0 degree is left , 180 is right , 90 is center
     for(servoPos=0;servoPos<=180;servoPos++){
@@ -36,7 +38,8 @@ void loop() {
         distance=cal_dis();
         }
         stest.write(servoPos);
-    
+        //move_forward();
+      //move_backward();
     }
     
     for(servoPos=180;servoPos>=0;servoPos--){
@@ -48,16 +51,13 @@ void loop() {
         distance=cal_dis();
         }
         stest.write(servoPos);
-    **/
-      // mbr.run(FORWARD);
-       //mur.run(FORWARD);
-       //mbl.run(FORWARD);
-      // mul.run(FORWARD);
+    
+      
 
        
     }
    //stest.write(90);   //stationary state
-//}
+}
 
 float cal_dis(){
 //returns distance in cm
@@ -70,4 +70,18 @@ float cal_dis(){
         duration=pulseIn(echoPin,HIGH);
         distance=(duration/2)*0.03444;
         return distance;
+}
+
+void move_forward(){
+      mbr.run(FORWARD);
+      mur.run(FORWARD);
+      mbl.run(FORWARD);
+      mul.run(FORWARD);
+}
+
+void move_backward(){
+      mbr.run(BACKWARD);
+      mur.run(BACKWARD);
+      mbl.run(BACKWARD);
+      mul.run(BACKWARD);
 }
