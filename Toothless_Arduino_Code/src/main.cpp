@@ -55,8 +55,16 @@ void loop() {
     }
 
    //stest.write(90);   //stationary state
-   **/
-     
+
+     mul.run(FORWARD);
+     mbl.run(FORWARD);
+     mur.run(FORWARD);
+     mbr.run(FORWARD);
+     mbr.setSpeed(255);
+     mur.setSpeed(255);
+     mbl.setSpeed(255);
+     mul.setSpeed(255);
+     **/
 
 }
 
