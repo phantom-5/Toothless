@@ -27,13 +27,13 @@ void setup() {
 }
 
 void loop() {
-   /**
+    /**
+   
     float distance;
       //0 degree is left , 180 is right , 90 is center
     for(servoPos=0;servoPos<=180;servoPos++){
         distance=cal_dis();
         Serial.println(distance);
-        delay(5);
         while(distance<=40){
         stest.write(servoPos);
         distance=cal_dis();
@@ -46,7 +46,6 @@ void loop() {
     for(servoPos=180;servoPos>=0;servoPos--){
         distance=cal_dis();
         Serial.println(distance);
-        delay(5);
         while(distance<=40){
         stest.write(servoPos);
         distance=cal_dis();
@@ -55,16 +54,9 @@ void loop() {
     }
 
    //stest.write(90);   //stationary state
-
-     mul.run(FORWARD);
-     mbl.run(FORWARD);
-     mur.run(FORWARD);
-     mbr.run(FORWARD);
-     mbr.setSpeed(255);
-     mur.setSpeed(255);
-     mbl.setSpeed(255);
-     mul.setSpeed(255);
-     **/
+**/
+     move_forward();
+    //stest.write(0);
 
 }
 
@@ -82,18 +74,10 @@ float cal_dis(){
 }
 
 void move_forward(){
-      Serial.println("Forward CALLED");
       mbr.run(FORWARD);
       mur.run(FORWARD);
       mbl.run(FORWARD);
       mul.run(FORWARD);
-      for(speed=0;speed<=255;speed+=2){
-        mbr.setSpeed(speed);
-        mbl.setSpeed(speed);
-        mur.setSpeed(speed);
-        mul.setSpeed(speed);
-        delay(5);
-      }
 
 }
 
