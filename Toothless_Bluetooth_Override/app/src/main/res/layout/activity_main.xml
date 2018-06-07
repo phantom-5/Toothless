@@ -8,22 +8,6 @@
     android:background="@drawable/bluetooth"
      >
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:text="Type Here..."
-        android:textColor="#000"
-        android:inputType="textMultiLine"
-        android:background="#70000000"
-        app:layout_constraintBottom_toTopOf="@+id/send"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/up"
         android:layout_width="73dp"
@@ -76,7 +60,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="262dp"
+        android:layout_height="224dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -93,16 +77,18 @@
     <Button
         android:id="@+id/override"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="44dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="#80f60404"
         android:text="Override"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/cd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/send"
@@ -136,12 +122,11 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:background="#faea07"
         android:text="Send Text"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/send_text"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -164,5 +149,32 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/send_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Type Here..."
+        app:layout_constraintBottom_toTopOf="@+id/override"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#70524c4c"
+        android:text="Connect/Disconnect"
+        app:layout_constraintBottom_toTopOf="@+id/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
