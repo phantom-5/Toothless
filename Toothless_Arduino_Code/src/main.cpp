@@ -131,7 +131,7 @@ int scan(){
       float distance;
       int angle=0;
       //0 degree is left , 180 is right , 90 is center
-    for(servoPos=0;servoPos<=180;servoPos++){
+    for(servoPos=0;servoPos<=180;servoPos+=15){
         distance=cal_dis();
         Serial.println(distance);
         if(distance<=45){
@@ -142,13 +142,14 @@ int scan(){
         break;
         }
         stest.write(servoPos);
+        delay(200);
         angle++; //move towards right
     }
     if(scan_control==1){
         return angle;
     }
     angle=0;
-    for(servoPos=180;servoPos>=0;servoPos--){
+    for(servoPos=180;servoPos>=0;servoPos-=15){
         distance=cal_dis();
         Serial.println(distance);
         if(distance<=45){
@@ -159,6 +160,7 @@ int scan(){
         break;
         }
         stest.write(servoPos);
+        delay(200);
         angle--;
     }
     if(scan_control==1){
