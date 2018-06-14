@@ -12,37 +12,42 @@ int trigPin = A0;
 int echoPin = A5;
 int speed=0;
 int first_control_forward=0;
+int move_control=0;
+int scan_control=0;
+int angle_loop_func=0;
 float cal_dis();
 void move_forward();
 void move_backward();
 void move_left();
 void move_right();
+void strategic_delay(int value);
 void stop();
 int scan();
 
 void setup() {
     Serial.begin(9600);
-    mbr.setSpeed(100);
-    mur.setSpeed(100);
-    mbl.setSpeed(100);
-    mul.setSpeed(100);
+    mbr.setSpeed(200);
+    mur.setSpeed(200);
+    mbl.setSpeed(200);
+    mul.setSpeed(200);
     stest.attach(10);
     pinMode(trigPin,OUTPUT);
     pinMode(echoPin,INPUT);
 }
 
 void loop() {
-    
+   /**
    float distance=0;
    stest.write(90);
    distance=cal_dis();
    if(distance>45){
-       while(distance>=45){
+       while(distance>45){
        move_forward();
        distance=cal_dis();
        }
        stop();
    }
+
    else if(distance>10 && distance<25){
        while(distance<25){
            move_backward();
@@ -52,6 +57,24 @@ void loop() {
    }else{
        stop();
    }
+   **/
+   if(scan_control==0){
+   angle_loop_func=scan();
+   Serial.println("angle is");
+   Serial.println(angle_loop_func);
+   }
+   else{
+       stop();
+   }
+   
+   /**
+   if(move_control==0){
+   move_left();
+   strategic_delay(500);
+   }else{
+       stop();
+   }
+   **/
 }
 
 float cal_dis(){
@@ -64,6 +87,8 @@ float cal_dis(){
         digitalWrite(trigPin,LOW);
         duration=pulseIn(echoPin,HIGH);
         distance=(duration/2)*0.03444;
+
+
         return distance;
 }
 
@@ -86,14 +111,15 @@ void move_left(){
       mur.run(FORWARD);
       mbl.run(BACKWARD);
       mul.run(BACKWARD);
-      delay(1500);
+     
 }
 void move_right(){
       mbr.run(BACKWARD);
       mur.run(BACKWARD);
       mbl.run(FORWARD);
       mul.run(FORWARD);
-      delay(1500);
+      delay(1000);
+      stop();
 }
 void stop(){
       mbr.run(RELEASE);
@@ -103,31 +129,45 @@ void stop(){
 }
 int scan(){
       float distance;
-      int angle;
+      int angle=0;
       //0 degree is left , 180 is right , 90 is center
     for(servoPos=0;servoPos<=180;servoPos++){
         distance=cal_dis();
         Serial.println(distance);
-        while(distance<=45){
+        if(distance<=45){
         stest.write(servoPos);
         angle=servoPos;
         distance=cal_dis();
-        return angle;
+        scan_control=1;
+        break;
         }
         stest.write(servoPos);
         angle++; //move towards right
     }
+    if(scan_control==1){
+        return angle;
+    }
+    angle=0;
     for(servoPos=180;servoPos>=0;servoPos--){
         distance=cal_dis();
         Serial.println(distance);
-        while(distance<=45){
+        if(distance<=45){
         stest.write(servoPos);
         angle=servoPos;
         distance=cal_dis();
-        return angle;
+        scan_control=1;
+        break;
         }
         stest.write(servoPos);
-    
+        angle--;
+    }
+    if(scan_control==1){
+        return angle;
     }
 
+}
+void strategic_delay(int value){
+    delay(value);
+    move_control=1;
+    Serial.println(move_control);
 }
