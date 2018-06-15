@@ -144,14 +144,14 @@ int scan(int dis){
       //  Serial.println(distance);
         if(distance<=dis){
         stest.write(servoPos);
-        angle=servoPos;
+        //angle=servoPos;
         distance=cal_dis();
         scan_control=1;
         break;
         }
         stest.write(servoPos);
         delay(200);
-        angle++; //move towards right
+        //angle++; //move towards right
         Left_Angle_Count++;
     }
     if(cal_dis()<=dis){
@@ -166,14 +166,14 @@ int scan(int dis){
       //  Serial.println(distance);
         if(distance<=dis){
         stest.write(servoPos);
-        angle=servoPos;
+        //angle=servoPos;
         distance=cal_dis();
         scan_control=1;
         break;
         }
         stest.write(servoPos);
         delay(200);
-        angle--; //moves towards left
+        //angle--; //moves towards left
         Right_Angle_Count--;
     }
     if(scan_control==1){
