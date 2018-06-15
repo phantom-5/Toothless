@@ -58,6 +58,7 @@ void loop() {
        stop();
    }
    **/
+  /**
    if(scan_control==0){
    angle_loop_func=scan();
    Serial.println("angle is");
@@ -66,6 +67,7 @@ void loop() {
    else{
        stop();
    }
+   **/
    
    /**
    if(move_control==0){
@@ -75,6 +77,7 @@ void loop() {
        stop();
    }
    **/
+  stest.write(90);
 }
 
 float cal_dis(){
@@ -161,7 +164,7 @@ int scan(){
         }
         stest.write(servoPos);
         delay(200);
-        angle--;
+        angle--; //moves towards left
     }
     if(scan_control==1){
         return angle;
