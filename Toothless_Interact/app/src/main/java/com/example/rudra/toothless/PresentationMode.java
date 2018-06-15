@@ -21,6 +21,7 @@ public class PresentationMode extends Activity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationMode.this,MainActivity.class);
                 startActivity(i);
+                System.exit(0);
             }
         });
         Random r=new Random();
@@ -35,6 +36,8 @@ public class PresentationMode extends Activity {
         Uri uri=Uri.parse(videoPath);
         videoView.setVideoURI(uri);
         videoView.start();
+        MediaPlayer toothless_music = MediaPlayer.create(this,R.raw.toothless_music);
+        toothless_music.start();
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {

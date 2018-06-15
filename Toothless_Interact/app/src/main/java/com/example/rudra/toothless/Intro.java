@@ -75,6 +75,7 @@ public class Intro extends AppCompatActivity {
                 public void run() {
                     if(you_chose!=null) {
                         String temp_x=you_chose.getText().toString();
+                        you_chose.setText(null);
                         int c1=0,c2=0,c3=0;
                         if(check_this_string(temp_x,"analys")){c1=1; tts.speak("Let me " + "analyze you", TextToSpeech.QUEUE_FLUSH, null);}
                         if(check_this_string(temp_x,"walk")){c2=1; tts.speak("You chose " + "to walk", TextToSpeech.QUEUE_FLUSH, null);}
@@ -104,7 +105,7 @@ public class Intro extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }, 4000);
-                        }else if(check_this_string(temp_x,"presentation")){
+                        }else if(check_this_string(temp_x,"present")){
                             Intent i=new Intent(Intro.this,PresentationMode.class);
                             startActivity(i);
                         }
