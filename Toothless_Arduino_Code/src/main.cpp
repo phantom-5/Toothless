@@ -63,6 +63,21 @@ void loop() {
            move_control=0;
            scan_control=0;
            Transit_Mode_Active=1;
+        }else{
+            if(cal_dis()<=60){
+                while(cal_dis() == 40){
+                       move_forward();
+                }
+                stop();
+            }else if(cal_dis()>=0 && cal_dis()<=25){
+                while(cal_dis()==40){
+                    move_backward();
+                }
+                stop();
+            }
+            else{
+                Transit_Mode_Active=0;
+            }
         }
     }//this ends intialisation of tranist mode
     
