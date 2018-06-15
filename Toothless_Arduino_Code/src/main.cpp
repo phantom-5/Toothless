@@ -138,6 +138,10 @@ int scan(int dis){
       Left_Angle_Count=0;
       Right_Angle_Count=0;
       //0 degree is left , 180 is right , 90 is center
+       stest.write(90);
+       if(cal_dis()<=dis){
+           return 0;
+       }
     for(servoPos=0;servoPos<=90;servoPos+=15){
         distance=cal_dis();
       //  Serial.println(distance);
@@ -152,6 +156,9 @@ int scan(int dis){
         delay(200);
         angle++; //move towards right
         Left_Angle_Count++;
+    }
+    if(cal_dis()<=dis){
+           return 0;
     }
     if(scan_control==1){
         if (Left_Angle_Count==6){stest.write(90);}
