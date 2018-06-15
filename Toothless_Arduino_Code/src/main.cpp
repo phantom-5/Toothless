@@ -91,8 +91,6 @@ float cal_dis(){
         digitalWrite(trigPin,LOW);
         duration=pulseIn(echoPin,HIGH);
         distance=(duration/2)*0.03444;
-
-
         return distance;
 }
 
@@ -122,8 +120,7 @@ void move_right(){
       mur.run(BACKWARD);
       mbl.run(FORWARD);
       mul.run(FORWARD);
-      delay(1000);
-      stop();
+
 }
 void stop(){
       mbr.run(RELEASE);
