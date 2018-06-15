@@ -15,6 +15,10 @@ int first_control_forward=0;
 int move_control=0;
 int scan_control=0;
 int angle_loop_func=0;
+int Bluetooth_Override_Active=0;
+int Transit_Mode_Active=0;
+int Left_Angle_Count=0;
+int Right_Angle_Count=0;
 float cal_dis();
 void move_forward();
 void move_backward();
@@ -22,10 +26,10 @@ void move_left();
 void move_right();
 void strategic_delay(int value);
 void stop();
-int scan();
+int scan(int dis);
 
 void setup() {
-    Serial.begin(9600);
+    //Serial.begin(9600);
     mbr.setSpeed(200);
     mur.setSpeed(200);
     mbl.setSpeed(200);
@@ -36,48 +40,32 @@ void setup() {
 }
 
 void loop() {
-   /**
-   float distance=0;
-   stest.write(90);
-   distance=cal_dis();
-   if(distance>45){
-       while(distance>45){
-       move_forward();
-       distance=cal_dis();
-       }
-       stop();
-   }
-
-   else if(distance>10 && distance<25){
-       while(distance<25){
-           move_backward();
-           distance=cal_dis();
-       }
-       stop();
-   }else{
-       stop();
-   }
-   **/
-  /**
-   if(scan_control==0){
-   angle_loop_func=scan();
-   Serial.println("angle is");
-   Serial.println(angle_loop_func);
-   }
-   else{
-       stop();
-   }
-   **/
-   
-   /**
-   if(move_control==0){
-   move_left();
-   strategic_delay(500);
-   }else{
-       stop();
-   }
-   **/
-  stest.write(90);
+    stest.write(90);
+    if (Bluetooth_Override_Active == 0){
+        if (Transit_Mode_Active == 0){
+           int gotcha = scan(45);
+          // Serial.println("gotcha");
+          // Serial.println(gotcha);
+           if(gotcha>0){
+               //move left
+               while(move_control==0){
+                move_right();
+                strategic_delay((((7-gotcha)*350)));
+               }stop();
+           }else if(gotcha<0){
+               //move right
+               while(move_control==0){
+                   move_left();
+                   strategic_delay(((7-((-1)*gotcha))*350));
+               }stop();
+               
+           }
+           move_control=0;
+           scan_control=0;
+           Transit_Mode_Active=1;
+        }
+    }//this ends intialisation of tranist mode
+    
 }
 
 float cal_dis(){
@@ -130,14 +118,17 @@ void stop(){
       mbl.run(RELEASE);
       mul.run(RELEASE);
 }
-int scan(){
+int scan(int dis){
+    while(scan_control==0){
       float distance;
       int angle=0;
+      Left_Angle_Count=0;
+      Right_Angle_Count=0;
       //0 degree is left , 180 is right , 90 is center
-    for(servoPos=0;servoPos<=180;servoPos+=15){
+    for(servoPos=0;servoPos<=90;servoPos+=15){
         distance=cal_dis();
-        Serial.println(distance);
-        if(distance<=45){
+      //  Serial.println(distance);
+        if(distance<=dis){
         stest.write(servoPos);
         angle=servoPos;
         distance=cal_dis();
@@ -147,15 +138,16 @@ int scan(){
         stest.write(servoPos);
         delay(200);
         angle++; //move towards right
+        Left_Angle_Count++;
     }
     if(scan_control==1){
-        return angle;
+        if (Left_Angle_Count==6){stest.write(90);}
+        return Left_Angle_Count;
     }
-    angle=0;
-    for(servoPos=180;servoPos>=0;servoPos-=15){
+    for(servoPos=180;servoPos>=90;servoPos-=15){
         distance=cal_dis();
-        Serial.println(distance);
-        if(distance<=45){
+      //  Serial.println(distance);
+        if(distance<=dis){
         stest.write(servoPos);
         angle=servoPos;
         distance=cal_dis();
@@ -165,9 +157,12 @@ int scan(){
         stest.write(servoPos);
         delay(200);
         angle--; //moves towards left
+        Right_Angle_Count--;
     }
     if(scan_control==1){
-        return angle;
+        if (Right_Angle_Count==6){stest.write(90);}
+        return Right_Angle_Count;
+    }
     }
 
 }
