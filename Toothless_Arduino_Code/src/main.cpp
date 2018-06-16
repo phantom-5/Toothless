@@ -30,10 +30,10 @@ int scan(int dis);
 
 void setup() {
     //Serial.begin(9600);
-    mbr.setSpeed(200);
-    mur.setSpeed(200);
-    mbl.setSpeed(200);
-    mul.setSpeed(200);
+    mbr.setSpeed(250);
+    mur.setSpeed(250);
+    mbl.setSpeed(250);
+    mul.setSpeed(250);
     stest.attach(10);
     pinMode(trigPin,OUTPUT);
     pinMode(echoPin,INPUT);
@@ -50,13 +50,13 @@ void loop() {
                //move left
                while(move_control==0){
                 move_right();
-                strategic_delay((((7-gotcha)*350)));
+                strategic_delay((((7-gotcha)*300)));
                }stop();
            }else if(gotcha<0){
                //move right
                while(move_control==0){
                    move_left();
-                   strategic_delay(((7-((-1)*gotcha))*350));
+                   strategic_delay(((7-((-1)*gotcha))*300));
                }stop();
                
            }
