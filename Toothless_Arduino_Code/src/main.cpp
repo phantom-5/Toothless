@@ -74,8 +74,10 @@ void loop() {
                     move_backward();
                 }
                 stop();
+            }else{
+                Transit_Mode_Active=0;
             }
-            Transit_Mode_Active=0;
+            
         }
     }//this ends autonomous code
     
@@ -99,6 +101,7 @@ void move_forward(){
       mur.run(FORWARD);
       mbl.run(FORWARD);
       mul.run(FORWARD);
+      Transit_Mode_Active=0;
 
 }
 
@@ -107,6 +110,7 @@ void move_backward(){
       mur.run(BACKWARD);
       mbl.run(BACKWARD);
       mul.run(BACKWARD);
+      Transit_Mode_Active=0;
 }
 void move_left(){
       mbr.run(FORWARD);
